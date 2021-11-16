@@ -2,6 +2,7 @@ const express = require ('express')
 const bodyParser = require ('body-parser')
 const cors = require ('cors')
 const db = require ('./data/db')
+const exerciseRouter = require ('./routes/exercise-router')
 
 
 
@@ -27,6 +28,8 @@ app.get('/api/hello', function (req,res, next){
 },  function (req,res){
     res.json({message:'helloooo '+res.subMessage+ ' it is currently '+req.requestTime})
 })
+
+app.use('/api', exerciseRouter)
 
 const port = process.env.PORT || 3001;
 
