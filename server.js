@@ -4,7 +4,7 @@ const app = express()
 app.use(express.static(`${__dirname}/ui-react/build`));
 
 var requestTime = function(req,res,next){
-    req.requestTime = Date.now()
+    req.requestTime = (Date.now()*1000).toLocaleString();
     next();
 }
 
