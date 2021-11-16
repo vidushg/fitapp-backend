@@ -1,7 +1,18 @@
 const express = require ('express')
+const bodyParser = require ('body-parser')
+const cors = require ('cors')
+const db = require ('./data/db')
+
+
+
 const app = express()
+app.use(cors())
+app.use(bodyParser.json())
 
 app.use(express.static(`${__dirname}/ui-react/build`));
+
+
+db.on('error', console.error.bind(console, 'MongoDB connectionError '));
 
 var requestTime = function(req,res,next){
     req.requestTime = (Date.now()*1000).toLocaleString();
